@@ -23,13 +23,13 @@ MAX_RUNNING = 8
 QC_REFERENCES = environ["QC_REFERENCES"]
 
 MINIMAP2_BASE = 'minimap2 -a -x sr -t {nprocs} {reference} %s'
-GZ_BASE = 'gzip > {out_dir}/%s.gz'
+GZ_BASE = 'gzip > {out_dir}/%s'
 
 # MINIMAP2_CMD = ' '.join([MINIMAP2_BASE, '%s -o {out_dir}/%s'])
 # MINIMAP2_CMD_SINGLE = (f'{MINIMAP2_BASE} -o '
 #                        '{out_dir}/%s')
 
-# sample: minimap2 -a -x sr -t {nprocs} {ref} %s %s | gzip > {out_dir}/%s.gz
+# sample: minimap2 -a -x sr -t {nprocs} {ref} %s %s | gzip > {out_dir}/%s
 MINIMAP2_CMD = (f'{MINIMAP2_BASE} %s | {GZ_BASE}')
 MINIMAP2_CMD_SINGLE = (f'{MINIMAP2_BASE} | {GZ_BASE}')
 

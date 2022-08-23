@@ -77,13 +77,13 @@ jobs:
         shell: bash -l {0}
         run: |
           conda config --add channels bioconda
-          conda create --yes -n qp-minimap2 -c bioconda minimap2=2.17 python=3.6 gzip --ignore-installed
+          conda create --yes -n qp-minimap2 -c bioconda minimap2=2.17 python=3.6 gzip
           conda activate qp-minimap2
 
           export QIITA_SERVER_CERT=`pwd`/qiita-dev/qiita_core/support_files/server.crt
           export QIITA_CONFIG_FP=`pwd`/qiita-dev/qiita_core/support_files/config_test_local.cfg
           pip --quiet install -U pip
-          pip --quiet install .
+          pip --quiet install . --ignore-installed
           pip --quiet install coveralls
 
           export QC_REFERENCES=$PWD/qp_minimap2/support_files/references/

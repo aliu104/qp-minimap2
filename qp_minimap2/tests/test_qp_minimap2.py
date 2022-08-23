@@ -225,11 +225,11 @@ class Minimap2Tests(PluginTestCase):
         exp_commands = [
             f'minimap2 -a -x sr -t 2 {QC_REFERENCES}genome.fasta '
             f'{apath}/S22205_S104_L001_R1_001.fastq.gz '
-            f'{apath}/S22205_S104_L001_R2_001.fastq.gz -o '
+            f'{apath}/S22205_S104_L001_R2_001.fastq.gz | gzip > '
             f'{out_dir}/S22205_S104_L001_R1_001.fastq.gz\n',
             f'minimap2 -a -x sr -t 2 {QC_REFERENCES}genome.fasta '
             f'{apath}/S22282_S102_L001_R1_001.fastq.gz '
-            f'{apath}/S22282_S102_L001_R2_001.fastq.gz -o '
+            f'{apath}/S22282_S102_L001_R2_001.fastq.gz | gzip > '
             f'{out_dir}/S22282_S102_L001_R1_001.fastq.gz']
         self.assertEqual(commands, exp_commands)
 
@@ -364,10 +364,10 @@ class Minimap2Tests(PluginTestCase):
         apath = dirname(artifact_info['files']['raw_forward_seqs'][0])
         exp_commands = [
             f'minimap2 -a -x sr -t 2 {QC_REFERENCES}genome.fasta '
-            f'{apath}/S22205_S104_L001_R1_001.fastq.gz -o '
+            f'{apath}/S22205_S104_L001_R1_001.fastq.gz | gzip > '
             f'{out_dir}/S22205_S104_L001_R1_001.fastq.gz\n',
             f'minimap2 -a -x sr -t 2 {QC_REFERENCES}genome.fasta '
-            f'{apath}/S22282_S102_L001_R1_001.fastq.gz -o '
+            f'{apath}/S22282_S102_L001_R1_001.fastq.gz | gzip > '
             f'{out_dir}/S22282_S102_L001_R1_001.fastq.gz']
         self.assertEqual(commands, exp_commands)
 
